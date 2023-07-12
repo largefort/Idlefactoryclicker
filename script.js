@@ -12,7 +12,7 @@ let factories = 0;
 let machines = 0;
 
 // Update the display
-function updateDisplay() {
+const updateDisplay = () => {
   moneyElem.textContent = money;
   factoriesElem.textContent = factories;
   machinesElem.textContent = machines;
@@ -20,44 +20,40 @@ function updateDisplay() {
   // Disable buttons if not enough money
   buyFactoryBtn.disabled = money < 100;
   buyMachineBtn.disabled = money < 10;
-}
+};
 
 // Produce money when the click button is clicked
-function produce() {
-  money += 1;
+const produce = () => {
+  money++;
   updateDisplay();
-}
+};
 
 // Buy a factory
-function buyFactory() {
+const buyFactory = () => {
   if (money >= 100) {
     money -= 100;
-    factories += 1;
+    factories++;
     updateDisplay();
   }
-}
+};
 
 // Buy a machine
-function buyMachine() {
+const buyMachine = () => {
   if (money >= 10) {
     money -= 10;
-    machines += 1;
+    machines++;
     updateDisplay();
   }
-}
+};
 
 // Save game progress to local storage
-function saveGame() {
-  const saveData = {
-    money: money,
-    factories: factories,
-    machines: machines
-  };
+const saveGame = () => {
+  const saveData = { money, factories, machines };
   localStorage.setItem("idleFactorySave", JSON.stringify(saveData));
-}
+};
 
 // Load game progress from local storage
-function loadGame() {
+const loadGame = () => {
   const saveData = JSON.parse(localStorage.getItem("idleFactorySave"));
   if (saveData) {
     money = saveData.money;
@@ -65,8 +61,14 @@ function loadGame() {
     machines = saveData.machines;
     updateDisplay();
   }
-}
+};
 
-// Event listeners for save and load buttons
+// Event listeners for button clicks
+clickBtn.addEventListener("click", produce);
+buyFactoryBtn.addEventListener("click", buyFactory);
+buyMachineBtn.addEventListener("click", buyMachine);
 window.addEventListener("beforeunload", saveGame);
 window.addEventListener("load", loadGame);
+
+// Update the display initially
+updateDisplay();
