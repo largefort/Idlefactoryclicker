@@ -7,20 +7,12 @@
 <body>
   <h1>Idle Factory Clicker</h1>
   <p>Money: <span id="money">0</span></p>
-  <button onclick="clickMoney()">Click to earn money!</button>
-  <hr>
-  <h2>Factories</h2>
-  <div id="factories">
-    <button onclick="buyFactory()">Buy Factory - $10</button>
-  </div>
-  <hr>
-  <h2>Machines</h2>
-  <div id="machines">
-    <button onclick="buyMachine()">Buy Machine - $100</button>
-  </div>
-  <hr>
-  <button onclick="saveGame()">Save Game</button>
-  <button onclick="loadGame()">Load Game</button>
+  <p>Factories: <span id="factories">0</span></p>
+  <p>Machines: <span id="machines">0</span></p>
+
+  <button id="clickBtn" onclick="produce()">Click Me!</button>
+  <button id="buyFactoryBtn" onclick="buyFactory()">Buy Factory ($100)</button>
+  <button id="buyMachineBtn" onclick="buyMachine()">Buy Machine ($10)</button>
 
   <script src="script.js"></script>
 </body>
