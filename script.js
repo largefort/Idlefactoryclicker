@@ -53,6 +53,13 @@ function buyFactory() {
   }
 }
 
+// Function to add a factory without spending money
+function addFactory() {
+  factories += 1;
+  factoryNames.push(prompt("Enter a name for the factory:") || `Factory ${factories}`);
+  updateGameState();
+}
+
 // Function to buy a machine
 function buyMachine() {
   if (money >= 100) {
@@ -63,6 +70,13 @@ function buyMachine() {
   } else {
     alert("Not enough money to buy a machine!");
   }
+}
+
+// Function to add a machine without spending money
+function addMachine() {
+  machines += 1;
+  machineNames.push(prompt("Enter a name for the machine:") || `Machine ${machines}`);
+  updateGameState();
 }
 
 // Function to automate factory production
