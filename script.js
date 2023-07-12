@@ -1,15 +1,4 @@
-// Get elements
-const moneyElem = document.getElementById("money");
-const factoriesElem = document.getElementById("factories");
-const machinesElem = document.getElementById("machines");
-const clickBtn = document.getElementById("clickBtn");
-const buyFactoryBtn = document.getElementById("buyFactoryBtn");
-const buyMachineBtn = document.getElementById("buyMachineBtn");
-
-// Game state variables
-let money = 0;
-let factories = 0;
-let machines = 0;
+// ...
 
 // Update the display
 function updateDisplay() {
@@ -36,6 +25,15 @@ function produce() {
   // Remove the dollar effect element after the animation ends
   setTimeout(() => {
     dollar.remove();
+  }, 1000);
+}
+
+// Automate factories and machines
+function automateProduction() {
+  setInterval(() => {
+    money += factories * 10;
+    money += machines * 1;
+    updateDisplay();
   }, 1000);
 }
 
@@ -81,3 +79,6 @@ function loadGame() {
 // Event listeners for save and load buttons
 window.addEventListener("beforeunload", saveGame);
 window.addEventListener("load", loadGame);
+
+// Start automating production
+automateProduction();
