@@ -1,52 +1,22 @@
 body {
   text-align: center;
-  font-family: Arial, sans-serif;
-}
-
-h1 {
-  color: #333;
 }
 
 button {
   margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 5px;
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
 }
 
-button:hover {
-  background-color: #45a049;
+#factories, #machines {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-#money {
-  font-size: 24px;
-  font-weight: bold;
-}
-
-.factory,
-.machine {
+.factory, .machine {
   width: 120px;
   height: 120px;
-  border: 1px solid #333;
+  border: 1px solid #000;
   margin: 5px;
   padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
-  font-weight: bold;
 }
 
-.factory {
-  background-color: #FFC107;
-  color: #333;
-}
-
-.machine {
-  background-color: #2196F3;
-  color: #fff;
-}
