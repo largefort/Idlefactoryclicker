@@ -11,9 +11,13 @@ let money = 0;
 let factories = 0;
 let machines = 0;
 
+// Production rates
+const factoryProductionRate = 1; // Money produced per second per factory
+const machineProductionRate = 0.1; // Money produced per second per machine
+
 // Update the display
 const updateDisplay = () => {
-  moneyElem.textContent = money;
+  moneyElem.textContent = money.toFixed(2);
   factoriesElem.textContent = factories;
   machinesElem.textContent = machines;
 
@@ -46,6 +50,14 @@ const buyMachine = () => {
   }
 };
 
+// Automate money production
+const automateProduction = () => {
+  const factoryIncome = factories * factoryProductionRate;
+  const machineIncome = machines * machineProductionRate;
+  money += factoryIncome + machineIncome;
+  updateDisplay();
+};
+
 // Save game progress to local storage
 const saveGame = () => {
   const saveData = { money, factories, machines };
@@ -69,6 +81,9 @@ buyFactoryBtn.addEventListener("click", buyFactory);
 buyMachineBtn.addEventListener("click", buyMachine);
 window.addEventListener("beforeunload", saveGame);
 window.addEventListener("load", loadGame);
+
+// Automate money production every second
+setInterval(automateProduction, 1000);
 
 // Update the display initially
 updateDisplay();
