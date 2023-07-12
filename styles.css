@@ -1,22 +1,76 @@
 body {
-  text-align: center;
+  background-color: #f2f2f2;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
   font-size: 28px;
+  color: #333;
+}
+
+p {
+  font-size: 18px;
+  color: #666;
+}
+
+.game-stats {
+  margin-top: 30px;
+}
+
+.game-stats p {
+  margin-bottom: 10px;
 }
 
 button {
-  margin: 10px;
-  padding: 10px 20px;
+  display: inline-block;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
   background-color: #4CAF50;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:disabled {
   background-color: #CCCCCC;
   cursor: not-allowed;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+.save-load-btns {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.save-load-btns button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 14px;
+}
+
+.save-load-btns button:first-child {
+  background-color: #2196F3;
+}
+
+.save-load-btns button:last-child {
+  background-color: #f44336;
+}
+
+.save-load-btns button:hover {
+  opacity: 0.8;
 }
