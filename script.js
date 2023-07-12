@@ -11,61 +11,64 @@ let money = 0;
 let factories = 0;
 let machines = 0;
 
-// Production rates
-const factoryProductionRate = 1; // Money produced per second per factory
-const machineProductionRate = 0.1; // Money produced per second per machine
-
 // Update the display
-const updateDisplay = () => {
-  moneyElem.textContent = money.toFixed(2);
+function updateDisplay() {
+  moneyElem.textContent = money;
   factoriesElem.textContent = factories;
   machinesElem.textContent = machines;
 
   // Disable buttons if not enough money
   buyFactoryBtn.disabled = money < 100;
   buyMachineBtn.disabled = money < 10;
-};
+}
 
 // Produce money when the click button is clicked
-const produce = () => {
-  money++;
+function produce() {
+  money += 1;
   updateDisplay();
-};
+
+  // Create dollar effect element
+  const dollar = document.createElement('span');
+  dollar.className = 'dollar';
+  dollar.textContent = '$';
+  document.body.appendChild(dollar);
+
+  // Remove the dollar effect element after the animation ends
+  setTimeout(() => {
+    dollar.remove();
+  }, 1000);
+}
 
 // Buy a factory
-const buyFactory = () => {
+function buyFactory() {
   if (money >= 100) {
     money -= 100;
-    factories++;
+    factories += 1;
     updateDisplay();
   }
-};
+}
 
 // Buy a machine
-const buyMachine = () => {
+function buyMachine() {
   if (money >= 10) {
     money -= 10;
-    machines++;
+    machines += 1;
     updateDisplay();
   }
-};
-
-// Automate money production
-const automateProduction = () => {
-  const factoryIncome = factories * factoryProductionRate;
-  const machineIncome = machines * machineProductionRate;
-  money += factoryIncome + machineIncome;
-  updateDisplay();
-};
+}
 
 // Save game progress to local storage
-const saveGame = () => {
-  const saveData = { money, factories, machines };
+function saveGame() {
+  const saveData = {
+    money: money,
+    factories: factories,
+    machines: machines
+  };
   localStorage.setItem("idleFactorySave", JSON.stringify(saveData));
-};
+}
 
 // Load game progress from local storage
-const loadGame = () => {
+function loadGame() {
   const saveData = JSON.parse(localStorage.getItem("idleFactorySave"));
   if (saveData) {
     money = saveData.money;
@@ -73,17 +76,8 @@ const loadGame = () => {
     machines = saveData.machines;
     updateDisplay();
   }
-};
+}
 
-// Event listeners for button clicks
-clickBtn.addEventListener("click", produce);
-buyFactoryBtn.addEventListener("click", buyFactory);
-buyMachineBtn.addEventListener("click", buyMachine);
+// Event listeners for save and load buttons
 window.addEventListener("beforeunload", saveGame);
 window.addEventListener("load", loadGame);
-
-// Automate money production every second
-setInterval(automateProduction, 1000);
-
-// Update the display initially
-updateDisplay();
