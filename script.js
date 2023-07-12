@@ -1,4 +1,15 @@
-// ...
+// Get elements
+const moneyElem = document.getElementById("money");
+const factoriesElem = document.getElementById("factories");
+const machinesElem = document.getElementById("machines");
+const clickBtn = document.getElementById("clickBtn");
+const buyFactoryBtn = document.getElementById("buyFactoryBtn");
+const buyMachineBtn = document.getElementById("buyMachineBtn");
+
+// Game state variables
+let money = 0;
+let factories = 0;
+let machines = 0;
 
 // Update the display
 function updateDisplay() {
